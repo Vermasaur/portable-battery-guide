@@ -244,22 +244,28 @@ function Index() {
           />
           <div className="grid gap-3 self-center">
             {[
-              ["Amazon / Online", "Renogy, BESTEK, Krieger — widest selection."],
-              ["Auto parts stores", "AutoZone, O'Reilly — small 150–400W units."],
-              ["Hardware stores", "Home Depot, Lowe's — contractor-grade brands."],
-              ["Marine supply", "West Marine — pure sine wave, weather-rated."],
-              ["RV dealers", "Higher capacity 1000W–3000W systems."],
-            ].map(([t, d]) => (
-              <div
+              ["Amazon / Online", "Renogy, BESTEK, Krieger — widest selection.", "https://www.amazon.com/s?k=power+inverter"],
+              ["Auto parts stores", "AutoZone, O'Reilly — small 150–400W units.", "https://www.autozone.com/search?searchText=power+inverter"],
+              ["Hardware stores", "Home Depot, Lowe's — contractor-grade brands.", "https://www.homedepot.com/s/power%2520inverter"],
+              ["Marine supply", "West Marine — pure sine wave, weather-rated.", "https://www.westmarine.com/search?q=inverter"],
+              ["RV dealers", "Higher capacity 1000W–3000W systems.", "https://www.campingworld.com/search?q=power+inverter"],
+            ].map(([t, d, url]) => (
+              <a
                 key={t}
-                className="flex items-start gap-4 rounded-lg border border-border bg-surface p-4"
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-4 rounded-lg border border-border bg-surface p-4 transition-colors hover:border-cyan-brand"
               >
                 <span className="font-mono text-cyan-brand">▸</span>
-                <div>
-                  <div className="text-foreground">{t}</div>
+                <div className="flex-1">
+                  <div className="flex items-baseline justify-between gap-2">
+                    <div className="text-foreground">{t}</div>
+                    <span className="font-mono text-xs text-cyan-brand">↗</span>
+                  </div>
                   <div className="text-sm text-muted-foreground">{d}</div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
@@ -284,33 +290,43 @@ function Index() {
               "11.1V (3S)",
               "~2–3 Ah",
               "DIY pack with BMS. Powers a laptop charger or LED lamp for 30–60 min.",
+              "https://www.amazon.com/s?k=18650+battery+pack+3s+bms",
             ],
             [
               "USB-C Power Bank w/ 12V DC out",
               "12V",
               "20,000–27,000 mAh",
               "Plug-and-play. Run a 100W mini inverter for ~30 min — phone, router, small fan.",
+              "https://www.amazon.com/s?k=power+bank+12v+dc+output",
             ],
             [
               "Sealed Lead-Acid 12V 7Ah",
               "12V",
               "7 Ah",
               "Cheap, heavy for its size. Good for ~20 min at 100W. Common in alarm systems.",
+              "https://www.amazon.com/s?k=sealed+lead+acid+battery+12v+7ah",
             ],
             [
               "RC LiPo 3S",
               "11.1V",
               "2–5 Ah",
               "Very light, high discharge. Short bursts (10–20 min) — handle with care.",
+              "https://www.amazon.com/s?k=rc+lipo+battery+3s+11.1v",
             ],
-          ].map(([name, v, cap, note]) => (
-            <div key={name} className="rounded-xl border border-border bg-surface p-5">
-              <div className="flex items-baseline justify-between">
+          ].map(([name, v, cap, note, url]) => (
+            <a
+              key={name}
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block rounded-xl border border-border bg-surface p-5 transition-colors hover:border-cyan-brand"
+            >
+              <div className="flex items-baseline justify-between gap-3">
                 <div className="text-foreground">{name}</div>
-                <div className="font-mono text-xs text-cyan-brand">{v} · {cap}</div>
+                <div className="font-mono text-xs text-cyan-brand">{v} · {cap} ↗</div>
               </div>
               <p className="mt-2 text-sm text-muted-foreground">{note}</p>
-            </div>
+            </a>
           ))}
         </div>
 
