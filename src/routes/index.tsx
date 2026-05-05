@@ -73,8 +73,8 @@ function Index() {
     ["dc-ac", "DC vs AC"],
     ["how", "How It Works"],
     ["buy", "Where to Buy"],
-    ["batteries", "Batteries"],
     ["small", "Small Batteries"],
+    ["batteries", "Batteries"],
   ];
 
   return (
