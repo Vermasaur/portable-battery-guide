@@ -472,15 +472,19 @@ function Index() {
             </thead>
             <tbody className="divide-y divide-border bg-surface">
               {[
-                ["LiFePO4", "Daily portable use", "3000–5000", "★ Best overall"],
-                ["AGM Deep Cycle", "RVs, boats, off-grid", "500–800", "Solid value"],
-                ["Flooded Lead-Acid", "Stationary backup", "300–500", "Cheapest"],
-                ["Marine Deep Cycle", "Mixed start/draw", "400–700", "Versatile"],
+                ["LiFePO4", "Daily portable use", "3000–5000", "★ Best overall", "https://www.amazon.com/s?k=lifepo4+battery+12v"],
+                ["AGM Deep Cycle", "RVs, boats, off-grid", "500–800", "Solid value", "https://www.amazon.com/s?k=agm+deep+cycle+battery"],
+                ["Flooded Lead-Acid", "Stationary backup", "300–500", "Cheapest", "https://www.amazon.com/s?k=flooded+lead+acid+deep+cycle+battery"],
+                ["Marine Deep Cycle", "Mixed start/draw", "400–700", "Versatile", "https://www.amazon.com/s?k=marine+deep+cycle+battery"],
               ].map((row) => (
-                <tr key={row[0]} className="text-muted-foreground">
-                  {row.map((c, i) => (
+                <tr
+                  key={row[0]}
+                  className="cursor-pointer text-muted-foreground transition-colors hover:bg-surface-2"
+                  onClick={() => window.open(row[4], "_blank", "noopener,noreferrer")}
+                >
+                  {row.slice(0, 4).map((c, i) => (
                     <td key={i} className={`p-4 ${i === 0 ? "text-foreground" : ""} ${i === 3 ? "text-cyan-brand" : ""}`}>
-                      {c}
+                      {i === 3 ? `${c} ↗` : c}
                     </td>
                   ))}
                 </tr>
