@@ -6,6 +6,7 @@ import diagHow from "@/assets/diagram-how-it-works.png";
 import diagUse from "@/assets/diagram-use-cases.png";
 import diagBatt from "@/assets/diagram-batteries.png";
 import diagBuy from "@/assets/diagram-where-to-buy.png";
+import diagSmall from "@/assets/diagram-small-batteries.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
