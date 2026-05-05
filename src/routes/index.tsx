@@ -7,6 +7,9 @@ import diagUse from "@/assets/diagram-use-cases.png";
 import diagBatt from "@/assets/diagram-batteries.png";
 import diagBuy from "@/assets/diagram-where-to-buy.png";
 import diagSmall from "@/assets/diagram-small-batteries.png";
+import diagSketch from "@/assets/diagram-concept-sketch.png";
+import diagCad2d from "@/assets/diagram-cad-2d.png";
+import diagCad3d from "@/assets/diagram-cad-3d.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -74,6 +77,7 @@ function Index() {
     ["how", "How It Works"],
     ["buy", "Where to Buy"],
     ["small", "Small Batteries"],
+    ["all-in-one", "All-in-One"],
     ["batteries", "Batteries"],
   ];
 
