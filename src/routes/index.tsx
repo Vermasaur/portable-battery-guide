@@ -74,6 +74,7 @@ function Index() {
     ["how", "How It Works"],
     ["buy", "Where to Buy"],
     ["batteries", "Batteries"],
+    ["small", "Small Batteries"],
   ];
 
   return (
