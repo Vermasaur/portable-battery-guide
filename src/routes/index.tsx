@@ -6,6 +6,7 @@ import diagHow from "@/assets/diagram-how-it-works.png";
 import diagUse from "@/assets/diagram-use-cases.png";
 import diagBatt from "@/assets/diagram-batteries.png";
 import diagBuy from "@/assets/diagram-where-to-buy.png";
+import diagSmall from "@/assets/diagram-small-batteries.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -72,6 +73,7 @@ function Index() {
     ["dc-ac", "DC vs AC"],
     ["how", "How It Works"],
     ["buy", "Where to Buy"],
+    ["small", "Small Batteries"],
     ["batteries", "Batteries"],
   ];
 
@@ -256,6 +258,82 @@ function Index() {
               </div>
             ))}
           </div>
+        </div>
+      </Section>
+
+      {/* Small Batteries */}
+      <Section
+        id="small"
+        eyebrow="06 / Lightweight Loads"
+        title="Small batteries for short, low-power runs"
+      >
+        <Diagram
+          src={diagSmall}
+          alt="Small portable batteries paired with a mini inverter"
+          caption="07 — Small Battery → Mini Inverter Plan"
+        />
+
+        <div className="mt-10 grid gap-4 md:grid-cols-2">
+          {[
+            [
+              "18650 Li-ion Pack",
+              "11.1V (3S)",
+              "~2–3 Ah",
+              "DIY pack with BMS. Powers a laptop charger or LED lamp for 30–60 min.",
+            ],
+            [
+              "USB-C Power Bank w/ 12V DC out",
+              "12V",
+              "20,000–27,000 mAh",
+              "Plug-and-play. Run a 100W mini inverter for ~30 min — phone, router, small fan.",
+            ],
+            [
+              "Sealed Lead-Acid 12V 7Ah",
+              "12V",
+              "7 Ah",
+              "Cheap, heavy for its size. Good for ~20 min at 100W. Common in alarm systems.",
+            ],
+            [
+              "RC LiPo 3S",
+              "11.1V",
+              "2–5 Ah",
+              "Very light, high discharge. Short bursts (10–20 min) — handle with care.",
+            ],
+          ].map(([name, v, cap, note]) => (
+            <div key={name} className="rounded-xl border border-border bg-surface p-5">
+              <div className="flex items-baseline justify-between">
+                <div className="text-foreground">{name}</div>
+                <div className="font-mono text-xs text-cyan-brand">{v} · {cap}</div>
+              </div>
+              <p className="mt-2 text-sm text-muted-foreground">{note}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-10 rounded-xl border border-cyan-brand/40 bg-surface p-6">
+          <div className="font-mono text-xs uppercase tracking-widest text-cyan-brand">
+            ▸ The Plan — Small Battery + Mini Inverter
+          </div>
+          <ol className="mt-4 grid gap-4 md:grid-cols-4">
+            {[
+              ["Pick a 100–150W mini inverter", "Cigarette-plug style, accepts 11–15V DC."],
+              ["Match voltage", "Battery must sit in the 11–15V window (3S Li-ion or 12V SLA)."],
+              ["Check current draw", "Watts ÷ 12V = Amps. A 60W laptop ≈ 5A from the battery."],
+              ["Estimate runtime", "Battery Ah ÷ Amps ≈ hours. 7Ah ÷ 5A ≈ 1.4 h (derate ~70%)."],
+            ].map(([t, d], i) => (
+              <li key={t} className="rounded-lg border border-border bg-surface-2 p-4">
+                <div className="font-mono text-xs text-cyan-brand">STEP {i + 1}</div>
+                <div className="mt-2 text-sm text-foreground">{t}</div>
+                <div className="mt-1 text-xs text-muted-foreground">{d}</div>
+              </li>
+            ))}
+          </ol>
+          <p className="mt-6 max-w-2xl font-mono text-xs text-muted-foreground">
+            <span className="text-cyan-brand">Caution:</span> never connect a single
+            3.7V cell directly to a 12V inverter, and always use a battery with a
+            BMS or proper fuse. Small batteries are for short, light loads —
+            phones, lamps, routers, fans — not power tools.
+          </p>
         </div>
       </Section>
 
