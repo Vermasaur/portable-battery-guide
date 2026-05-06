@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as LightweightRouteImport } from './routes/lightweight'
+import { Route as HeavyDutyRouteImport } from './routes/heavy-duty'
 import { Route as IndexRouteImport } from './routes/index'
 
 const LightweightRoute = LightweightRouteImport.update({
   id: '/lightweight',
   path: '/lightweight',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HeavyDutyRoute = HeavyDutyRouteImport.update({
+  id: '/heavy-duty',
+  path: '/heavy-duty',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -25,27 +31,31 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/heavy-duty': typeof HeavyDutyRoute
   '/lightweight': typeof LightweightRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/heavy-duty': typeof HeavyDutyRoute
   '/lightweight': typeof LightweightRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/heavy-duty': typeof HeavyDutyRoute
   '/lightweight': typeof LightweightRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/lightweight'
+  fullPaths: '/' | '/heavy-duty' | '/lightweight'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/lightweight'
-  id: '__root__' | '/' | '/lightweight'
+  to: '/' | '/heavy-duty' | '/lightweight'
+  id: '__root__' | '/' | '/heavy-duty' | '/lightweight'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  HeavyDutyRoute: typeof HeavyDutyRoute
   LightweightRoute: typeof LightweightRoute
 }
 
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/lightweight'
       fullPath: '/lightweight'
       preLoaderRoute: typeof LightweightRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/heavy-duty': {
+      id: '/heavy-duty'
+      path: '/heavy-duty'
+      fullPath: '/heavy-duty'
+      preLoaderRoute: typeof HeavyDutyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  HeavyDutyRoute: HeavyDutyRoute,
   LightweightRoute: LightweightRoute,
 }
 export const routeTree = rootRouteImport
