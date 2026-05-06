@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import heroImg from "@/assets/hero-inverter.png";
 import diagUse from "@/assets/diagram-use-cases.png";
+import { SiteHeader, SiteFooter, Diagram } from "@/components/site-chrome";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -10,13 +11,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Why a battery-powered outlet (power inverter) is worth having: run cord-powered tools, instruments, and appliances anywhere.",
+          "Why a battery-powered outlet is worth having: run cord-powered tools, instruments, and appliances anywhere.",
       },
     ],
   }),
 });
 
-const sections = [
+const paths = [
   {
     to: "/lightweight",
     eyebrow: "01",
@@ -27,47 +28,27 @@ const sections = [
     to: "/heavy-duty",
     eyebrow: "02",
     title: "Heavy-Duty Inverter Setups",
-    blurb: "Deep-cycle batteries + 1000–3000W inverters for tools, fridges, and off-grid living.",
+    blurb: "Deep-cycle batteries + 1000–3000W inverters for tools, fridges, off-grid living.",
   },
   {
     to: "/all-in-one",
     eyebrow: "03",
     title: "All-in-One Portable Battery",
-    blurb: "Sealed power stations — battery, inverter, and outlet in a single rugged box.",
+    blurb: "Sealed power stations — battery, inverter, and outlet in one rugged box.",
   },
   {
     to: "/evs",
     eyebrow: "04",
     title: "EVs With Outlets",
-    blurb: "Trucks and SUVs that have AC outlets built in — your vehicle is the inverter.",
+    blurb: "Trucks and SUVs with AC outlets built in — your vehicle is the inverter.",
   },
 ] as const;
 
 function Index() {
   return (
     <div className="min-h-screen">
-      <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <Link to="/" className="flex items-center gap-2 font-mono text-sm">
-            <span className="inline-block h-2 w-2 rounded-full bg-cyan-brand shadow-glow" />
-            <span className="text-foreground">BATTERY</span>
-            <span className="text-cyan-brand">/OUTLET</span>
-          </Link>
-          <nav className="hidden gap-6 md:flex">
-            {sections.map((s) => (
-              <Link
-                key={s.to}
-                to={s.to}
-                className="font-mono text-xs uppercase tracking-widest text-muted-foreground transition-colors hover:text-cyan-brand"
-              >
-                {s.title.split(" ")[0]}
-              </Link>
-            ))}
-          </nav>
-        </div>
-      </header>
+      <SiteHeader />
 
-      {/* Hero */}
       <section className="bg-hero-glow relative overflow-hidden">
         <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-2 md:py-32">
           <div className="flex flex-col justify-center">
@@ -104,8 +85,7 @@ function Index() {
         </div>
       </section>
 
-      {/* Why */}
-      <section id="why" className="border-t border-border py-20 md:py-28">
+      <section className="border-t border-border py-20 md:py-28">
         <div className="mx-auto max-w-6xl px-6">
           <div className="mb-10 flex items-baseline gap-4">
             <span className="font-mono text-xs uppercase tracking-[0.25em] text-cyan-brand">
@@ -117,19 +97,7 @@ function Index() {
             Why use a power inverter
           </h2>
 
-          <figure className="overflow-hidden rounded-xl border border-border bg-surface shadow-glow">
-            <img
-              src={diagUse}
-              alt="Common inverter use cases"
-              loading="lazy"
-              width={1280}
-              height={720}
-              className="w-full"
-            />
-            <figcaption className="border-t border-border bg-surface-2 px-5 py-3 font-mono text-xs uppercase tracking-wider text-muted-foreground">
-              <span className="text-cyan-brand">FIG.</span> 01 — Field Applications
-            </figcaption>
-          </figure>
+          <Diagram src={diagUse} alt="Common inverter use cases" caption="01 — Field Applications" />
 
           <ul className="mt-10 grid gap-4 font-mono text-sm md:grid-cols-2">
             {[
@@ -149,7 +117,6 @@ function Index() {
         </div>
       </section>
 
-      {/* Choose-your-path */}
       <section className="border-t border-border py-20">
         <div className="mx-auto max-w-6xl px-6">
           <div className="mb-10 flex items-baseline gap-4">
@@ -162,7 +129,7 @@ function Index() {
             Four ways to get a battery-powered outlet
           </h2>
           <div className="grid gap-4 md:grid-cols-2">
-            {sections.map((s) => (
+            {paths.map((s) => (
               <Link
                 key={s.to}
                 to={s.to}
@@ -182,11 +149,7 @@ function Index() {
         </div>
       </section>
 
-      <footer className="border-t border-border py-10">
-        <div className="mx-auto max-w-6xl px-6 font-mono text-xs uppercase tracking-widest text-muted-foreground">
-          <span className="text-cyan-brand">⌁</span> Battery Powered Outlets — A Field Guide
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }
