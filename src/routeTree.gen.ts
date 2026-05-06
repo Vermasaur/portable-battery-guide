@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as LightweightRouteImport } from './routes/lightweight'
 import { Route as HeavyDutyRouteImport } from './routes/heavy-duty'
+import { Route as AllInOneRouteImport } from './routes/all-in-one'
 import { Route as IndexRouteImport } from './routes/index'
 
 const LightweightRoute = LightweightRouteImport.update({
@@ -23,6 +24,11 @@ const HeavyDutyRoute = HeavyDutyRouteImport.update({
   path: '/heavy-duty',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AllInOneRoute = AllInOneRouteImport.update({
+  id: '/all-in-one',
+  path: '/all-in-one',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -31,30 +37,34 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/all-in-one': typeof AllInOneRoute
   '/heavy-duty': typeof HeavyDutyRoute
   '/lightweight': typeof LightweightRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/all-in-one': typeof AllInOneRoute
   '/heavy-duty': typeof HeavyDutyRoute
   '/lightweight': typeof LightweightRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/all-in-one': typeof AllInOneRoute
   '/heavy-duty': typeof HeavyDutyRoute
   '/lightweight': typeof LightweightRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/heavy-duty' | '/lightweight'
+  fullPaths: '/' | '/all-in-one' | '/heavy-duty' | '/lightweight'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/heavy-duty' | '/lightweight'
-  id: '__root__' | '/' | '/heavy-duty' | '/lightweight'
+  to: '/' | '/all-in-one' | '/heavy-duty' | '/lightweight'
+  id: '__root__' | '/' | '/all-in-one' | '/heavy-duty' | '/lightweight'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AllInOneRoute: typeof AllInOneRoute
   HeavyDutyRoute: typeof HeavyDutyRoute
   LightweightRoute: typeof LightweightRoute
 }
@@ -75,6 +85,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HeavyDutyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/all-in-one': {
+      id: '/all-in-one'
+      path: '/all-in-one'
+      fullPath: '/all-in-one'
+      preLoaderRoute: typeof AllInOneRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AllInOneRoute: AllInOneRoute,
   HeavyDutyRoute: HeavyDutyRoute,
   LightweightRoute: LightweightRoute,
 }
