@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import diagSketch from "@/assets/diagram-concept-sketch.png";
 import diagCad2d from "@/assets/diagram-cad-2d.png";
 import diagCad3d from "@/assets/diagram-cad-3d.png";
-import { SiteHeader, SiteFooter, PageHero, Section, Diagram } from "@/components/site-chrome";
+import { SiteHeader, SiteFooter, PageHero, Section, Diagram, SectionNav } from "@/components/site-chrome";
 
 export const Route = createFileRoute("/all-in-one")({
   component: AllInOne,
@@ -82,6 +82,7 @@ function AllInOne() {
         </div>
       </Section>
 
+      <SectionNav current="/all-in-one" />
       <SiteFooter />
     </div>
   );
