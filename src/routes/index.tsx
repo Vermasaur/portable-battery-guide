@@ -42,6 +42,12 @@ const paths = [
     title: "EVs With Outlets",
     blurb: "Trucks and SUVs with AC outlets built in — your vehicle is the inverter.",
   },
+  {
+    to: "/theory",
+    eyebrow: "05",
+    title: "Theory",
+    blurb: "System overview, DC vs AC, and how a power inverter works inside.",
+  },
 ] as const;
 
 function Index() {
