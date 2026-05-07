@@ -1,9 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import heroImg from "@/assets/hero-inverter.png";
 import diagUse from "@/assets/diagram-use-cases.png";
-import diagOverview from "@/assets/diagram-inverter-overview.png";
-import diagDcAc from "@/assets/diagram-dc-vs-ac.png";
-import diagHow from "@/assets/diagram-how-it-works.png";
 import { SiteHeader, SiteFooter, Diagram } from "@/components/site-chrome";
 
 export const Route = createFileRoute("/")({
