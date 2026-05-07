@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import diagEv from "@/assets/diagram-ev-outlets.png";
-import { SiteHeader, SiteFooter, PageHero, Section, Diagram } from "@/components/site-chrome";
+import { SiteHeader, SiteFooter, PageHero, Section, Diagram, SectionNav } from "@/components/site-chrome";
 
 export const Route = createFileRoute("/evs")({
   component: EvsPage,
@@ -106,6 +106,7 @@ function EvsPage() {
         </div>
       </Section>
 
+      <SectionNav current="/evs" />
       <SiteFooter />
     </div>
   );

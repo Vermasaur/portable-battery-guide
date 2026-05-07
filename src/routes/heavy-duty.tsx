@@ -3,7 +3,7 @@ import diagOverview from "@/assets/diagram-inverter-overview.png";
 import diagHow from "@/assets/diagram-how-it-works.png";
 import diagBatt from "@/assets/diagram-batteries.png";
 import diagBuy from "@/assets/diagram-where-to-buy.png";
-import { SiteHeader, SiteFooter, PageHero, Section, Diagram } from "@/components/site-chrome";
+import { SiteHeader, SiteFooter, PageHero, Section, Diagram, SectionNav } from "@/components/site-chrome";
 
 export const Route = createFileRoute("/heavy-duty")({
   component: HeavyDuty,
@@ -128,6 +128,7 @@ function HeavyDuty() {
         </p>
       </Section>
 
+      <SectionNav current="/heavy-duty" />
       <SiteFooter />
     </div>
   );

@@ -49,11 +49,55 @@ export function PageHero({ eyebrow, title, blurb }: { eyebrow: string; title: st
   return (
     <section className="bg-hero-glow border-b border-border">
       <div className="mx-auto max-w-6xl px-6 py-16 md:py-24">
-        <span className="font-mono text-xs uppercase tracking-[0.3em] text-cyan-brand">
-          ⌁ {eyebrow}
-        </span>
+        <Link
+          to="/"
+          className="mb-6 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted-foreground transition-colors hover:text-cyan-brand"
+        >
+          <span className="text-cyan-brand">←</span> Back to Home
+        </Link>
+        <div>
+          <span className="font-mono text-xs uppercase tracking-[0.3em] text-cyan-brand">
+            ⌁ {eyebrow}
+          </span>
+        </div>
         <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-tight md:text-6xl">{title}</h1>
         <p className="mt-6 max-w-2xl text-lg text-muted-foreground">{blurb}</p>
+      </div>
+    </section>
+  );
+}
+
+export function SectionNav({ current }: { current: "/lightweight" | "/heavy-duty" | "/all-in-one" | "/evs" }) {
+  const all = [
+    { to: "/lightweight" as const, label: "Lightweight Setups" },
+    { to: "/heavy-duty" as const, label: "Heavy-Duty Setups" },
+    { to: "/all-in-one" as const, label: "All-in-One Stations" },
+    { to: "/evs" as const, label: "EVs With Outlets" },
+  ];
+  const others = all.filter((p) => p.to !== current);
+  return (
+    <section className="border-t border-border bg-surface/40 py-10">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="mb-4 font-mono text-xs uppercase tracking-[0.25em] text-cyan-brand">
+          Explore Other Sections
+        </div>
+        <div className="grid gap-3 md:grid-cols-4">
+          <Link
+            to="/"
+            className="rounded-lg border border-border bg-surface p-4 text-sm transition-colors hover:border-cyan-brand"
+          >
+            <span className="text-cyan-brand">←</span> Home
+          </Link>
+          {others.map((p) => (
+            <Link
+              key={p.to}
+              to={p.to}
+              className="rounded-lg border border-border bg-surface p-4 text-sm transition-colors hover:border-cyan-brand"
+            >
+              {p.label} <span className="text-cyan-brand">→</span>
+            </Link>
+          ))}
+        </div>
       </div>
     </section>
   );
