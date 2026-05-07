@@ -1,9 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import heroImg from "@/assets/hero-inverter.png";
 import diagUse from "@/assets/diagram-use-cases.png";
-import diagOverview from "@/assets/diagram-inverter-overview.png";
-import diagDcAc from "@/assets/diagram-dc-vs-ac.png";
-import diagHow from "@/assets/diagram-how-it-works.png";
 import { SiteHeader, SiteFooter, Diagram } from "@/components/site-chrome";
 
 export const Route = createFileRoute("/")({
@@ -44,6 +41,12 @@ const paths = [
     eyebrow: "04",
     title: "EVs With Outlets",
     blurb: "Trucks and SUVs with AC outlets built in — your vehicle is the inverter.",
+  },
+  {
+    to: "/theory",
+    eyebrow: "05",
+    title: "Theory",
+    blurb: "System overview, DC vs AC, and how a power inverter works inside.",
   },
 ] as const;
 
@@ -119,72 +122,6 @@ function Index() {
           </ul>
         </div>
       </section>
-
-      <section className="border-t border-border py-20 md:py-28">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="mb-10 flex items-baseline gap-4">
-            <span className="font-mono text-xs uppercase tracking-[0.25em] text-cyan-brand">
-              System Overview
-            </span>
-            <span className="h-px flex-1 bg-border" />
-          </div>
-          <h2 className="mb-10 max-w-3xl text-3xl font-semibold md:text-4xl">
-            What a battery-powered outlet looks like
-          </h2>
-          <Diagram src={diagOverview} alt="Battery, inverter, AC outlet system overview" caption="02 — Battery → Inverter → AC Outlet" />
-        </div>
-      </section>
-
-      <section className="border-t border-border py-20 md:py-28">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="mb-10 flex items-baseline gap-4">
-            <span className="font-mono text-xs uppercase tracking-[0.25em] text-cyan-brand">
-              Electrical Theory
-            </span>
-            <span className="h-px flex-1 bg-border" />
-          </div>
-          <h2 className="mb-10 max-w-3xl text-3xl font-semibold md:text-4xl">
-            DC vs AC current — why an inverter is needed
-          </h2>
-          <Diagram src={diagDcAc} alt="DC vs AC waveform comparison" caption="03 — Waveform Comparison" />
-          <p className="mt-8 max-w-3xl text-muted-foreground">
-            Batteries deliver <span className="text-cyan-brand">direct current</span> (DC) — a steady
-            one-way flow. Wall outlets supply <span className="text-cyan-brand">alternating current</span>{" "}
-            (AC) — voltage that swings positive and negative 60 times per second. Cord-powered
-            devices expect AC, so an inverter is the translator between them.
-          </p>
-        </div>
-      </section>
-
-      <section className="border-t border-border py-20 md:py-28">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="mb-10 flex items-baseline gap-4">
-            <span className="font-mono text-xs uppercase tracking-[0.25em] text-cyan-brand">
-              Mechanism
-            </span>
-            <span className="h-px flex-1 bg-border" />
-          </div>
-          <h2 className="mb-10 max-w-3xl text-3xl font-semibold md:text-4xl">
-            How a power inverter works
-          </h2>
-          <Diagram src={diagHow} alt="Inverter internal block diagram" caption="04 — Internal Signal Path" />
-          <ol className="mt-8 grid gap-4 font-mono text-sm md:grid-cols-4">
-            {[
-              ["Oscillator", "Generates a low-voltage AC switching signal."],
-              ["MOSFET H-Bridge", "Chops DC into alternating pulses."],
-              ["Transformer", "Steps voltage up from 12V toward 120V."],
-              ["Output filter", "Smooths the wave into clean pure-sine AC."],
-            ].map(([t, d], i) => (
-              <li key={t} className="rounded-lg border border-border bg-surface p-4">
-                <div className="text-cyan-brand">STAGE {i + 1}</div>
-                <div className="mt-2 text-foreground">{t}</div>
-                <div className="mt-1 text-xs text-muted-foreground">{d}</div>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
       <section className="border-t border-border py-20">
         <div className="mx-auto max-w-6xl px-6">
           <div className="mb-10 flex items-baseline gap-4">

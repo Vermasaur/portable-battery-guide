@@ -9,12 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TheoryRouteImport } from './routes/theory'
 import { Route as LightweightRouteImport } from './routes/lightweight'
 import { Route as HeavyDutyRouteImport } from './routes/heavy-duty'
 import { Route as EvsRouteImport } from './routes/evs'
 import { Route as AllInOneRouteImport } from './routes/all-in-one'
 import { Route as IndexRouteImport } from './routes/index'
 
+const TheoryRoute = TheoryRouteImport.update({
+  id: '/theory',
+  path: '/theory',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LightweightRoute = LightweightRouteImport.update({
   id: '/lightweight',
   path: '/lightweight',
@@ -47,6 +53,7 @@ export interface FileRoutesByFullPath {
   '/evs': typeof EvsRoute
   '/heavy-duty': typeof HeavyDutyRoute
   '/lightweight': typeof LightweightRoute
+  '/theory': typeof TheoryRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +61,7 @@ export interface FileRoutesByTo {
   '/evs': typeof EvsRoute
   '/heavy-duty': typeof HeavyDutyRoute
   '/lightweight': typeof LightweightRoute
+  '/theory': typeof TheoryRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,13 +70,27 @@ export interface FileRoutesById {
   '/evs': typeof EvsRoute
   '/heavy-duty': typeof HeavyDutyRoute
   '/lightweight': typeof LightweightRoute
+  '/theory': typeof TheoryRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/all-in-one' | '/evs' | '/heavy-duty' | '/lightweight'
+  fullPaths:
+    | '/'
+    | '/all-in-one'
+    | '/evs'
+    | '/heavy-duty'
+    | '/lightweight'
+    | '/theory'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/all-in-one' | '/evs' | '/heavy-duty' | '/lightweight'
-  id: '__root__' | '/' | '/all-in-one' | '/evs' | '/heavy-duty' | '/lightweight'
+  to: '/' | '/all-in-one' | '/evs' | '/heavy-duty' | '/lightweight' | '/theory'
+  id:
+    | '__root__'
+    | '/'
+    | '/all-in-one'
+    | '/evs'
+    | '/heavy-duty'
+    | '/lightweight'
+    | '/theory'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -77,10 +99,18 @@ export interface RootRouteChildren {
   EvsRoute: typeof EvsRoute
   HeavyDutyRoute: typeof HeavyDutyRoute
   LightweightRoute: typeof LightweightRoute
+  TheoryRoute: typeof TheoryRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/theory': {
+      id: '/theory'
+      path: '/theory'
+      fullPath: '/theory'
+      preLoaderRoute: typeof TheoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/lightweight': {
       id: '/lightweight'
       path: '/lightweight'
@@ -125,6 +155,7 @@ const rootRouteChildren: RootRouteChildren = {
   EvsRoute: EvsRoute,
   HeavyDutyRoute: HeavyDutyRoute,
   LightweightRoute: LightweightRoute,
+  TheoryRoute: TheoryRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
