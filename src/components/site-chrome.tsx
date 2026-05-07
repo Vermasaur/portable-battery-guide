@@ -68,12 +68,13 @@ export function PageHero({ eyebrow, title, blurb }: { eyebrow: string; title: st
   );
 }
 
-export function SectionNav({ current }: { current: "/lightweight" | "/heavy-duty" | "/all-in-one" | "/evs" }) {
+export function SectionNav({ current }: { current: "/lightweight" | "/heavy-duty" | "/all-in-one" | "/evs" | "/theory" }) {
   const all = [
     { to: "/lightweight" as const, label: "Lightweight Setups" },
     { to: "/heavy-duty" as const, label: "Heavy-Duty Setups" },
     { to: "/all-in-one" as const, label: "All-in-One Stations" },
     { to: "/evs" as const, label: "EVs With Outlets" },
+    { to: "/theory" as const, label: "Theory" },
   ];
   const others = all.filter((p) => p.to !== current);
   return (
