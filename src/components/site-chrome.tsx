@@ -6,6 +6,7 @@ const nav = [
   { to: "/heavy-duty", label: "Heavy-Duty" },
   { to: "/all-in-one", label: "All-in-One" },
   { to: "/evs", label: "EVs" },
+  { to: "/theory", label: "Theory" },
 ] as const;
 
 export function SiteHeader() {
