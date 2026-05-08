@@ -1,6 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import diagOverview from "@/assets/diagram-inverter-overview.png";
-import diagHow from "@/assets/diagram-how-it-works.png";
 import diagBatt from "@/assets/diagram-batteries.png";
 import diagBuy from "@/assets/diagram-where-to-buy.png";
 import { SiteHeader, SiteFooter, PageHero, Section, Diagram, SectionNav } from "@/components/site-chrome";
@@ -43,28 +41,6 @@ function HeavyDuty() {
         title="Big batteries, big inverters, big loads"
         blurb="Power tools, mini fridges, full DJ rigs, even off-grid cabins. A deep-cycle battery bank paired with a 1000–3000W pure sine inverter does the job."
       />
-
-      <Section eyebrow="Overview" title="The full system">
-        <Diagram src={diagOverview} alt="Battery → Inverter → 120V AC" caption="A — System Overview" />
-      </Section>
-
-      <Section eyebrow="Mechanism" title="How a power inverter works">
-        <Diagram src={diagHow} alt="Inverter internal stages" caption="B — Internal Signal Path" />
-        <ol className="mt-10 grid gap-4 md:grid-cols-4">
-          {[
-            ["Oscillator", "Generates a 60 Hz timing signal."],
-            ["Switching", "MOSFETs flip DC polarity rapidly."],
-            ["Transformer", "Steps voltage up from 12V to 120V."],
-            ["Filter", "Smooths output into a clean sine wave."],
-          ].map(([t, d], i) => (
-            <li key={t} className="rounded-xl border border-border bg-surface p-5">
-              <div className="font-mono text-xs text-cyan-brand">STEP {i + 1}</div>
-              <div className="mt-2 text-lg">{t}</div>
-              <div className="mt-2 text-sm text-muted-foreground">{d}</div>
-            </li>
-          ))}
-        </ol>
-      </Section>
 
       <Section eyebrow="Sourcing" title="Where to buy a heavy-duty inverter">
         <div className="grid gap-8 lg:grid-cols-2">

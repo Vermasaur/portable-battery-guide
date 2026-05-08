@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import heroImg from "@/assets/hero-inverter.png";
 import diagUse from "@/assets/diagram-use-cases.png";
+import diagOverview from "@/assets/diagram-inverter-overview.png";
 import { SiteHeader, SiteFooter, Diagram } from "@/components/site-chrome";
 
 export const Route = createFileRoute("/")({
@@ -41,12 +42,6 @@ const paths = [
     eyebrow: "04",
     title: "EVs With Outlets",
     blurb: "Trucks and SUVs with AC outlets built in — your vehicle is the inverter.",
-  },
-  {
-    to: "/theory",
-    eyebrow: "05",
-    title: "Theory",
-    blurb: "System overview, DC vs AC, and how a power inverter works inside.",
   },
 ] as const;
 
@@ -120,6 +115,41 @@ function Index() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      <section className="border-t border-border py-20">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="mb-10 flex items-baseline gap-4">
+            <span className="font-mono text-xs uppercase tracking-[0.25em] text-cyan-brand">
+              Theory
+            </span>
+            <span className="h-px flex-1 bg-border" />
+          </div>
+          <h2 className="mb-8 max-w-3xl text-4xl font-semibold md:text-5xl">
+            How a battery becomes an outlet
+          </h2>
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+            <Diagram src={diagOverview} alt="Battery, inverter, AC outlet system overview" caption="Preview — Battery → Inverter → AC Outlet" />
+            <div className="space-y-4 text-muted-foreground">
+              <p>
+                A battery stores <span className="text-cyan-brand">DC</span> — a steady one-way
+                current. Wall outlets deliver <span className="text-cyan-brand">AC</span> — voltage
+                that swings 60 times per second. An inverter is the translator between them.
+              </p>
+              <p>
+                Inside, an oscillator times the switch, MOSFETs chop DC into pulses, a transformer
+                steps the voltage up to 120V, and a filter smooths the wave into clean pure-sine AC.
+              </p>
+              <Link
+                to="/theory"
+                className="inline-flex items-center gap-2 rounded-lg border border-cyan-brand/40 bg-surface px-5 py-3 font-mono text-xs uppercase tracking-widest text-cyan-brand transition-colors hover:bg-cyan-brand/10"
+              >
+                Learn more about how battery powered outlets work
+                <span>→</span>
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
       <section className="border-t border-border py-20">

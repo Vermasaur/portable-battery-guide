@@ -1,7 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import diagSmall from "@/assets/diagram-small-batteries.png";
-import diagDcAc from "@/assets/diagram-dc-vs-ac.png";
-import diagHow from "@/assets/diagram-how-it-works.png";
 import { SiteHeader, SiteFooter, PageHero, Section, Diagram, SectionNav } from "@/components/site-chrome";
 
 export const Route = createFileRoute("/lightweight")({
@@ -35,16 +33,8 @@ function LightweightPage() {
         blurb="Phones, lamps, routers, fans, and laptop chargers — pair a small battery with a 100–150W mini inverter for portable AC anywhere."
       />
 
-      <Section eyebrow="Theory" title="DC vs AC — why an inverter is needed">
-        <Diagram src={diagDcAc} alt="DC vs AC waveforms" caption="A — Waveform Comparison" />
-      </Section>
-
-      <Section eyebrow="Mechanism" title="How a small inverter works">
-        <Diagram src={diagHow} alt="Inverter internal block diagram" caption="B — Internal Signal Path" />
-      </Section>
-
       <Section eyebrow="Batteries" title="Small batteries that pair with mini inverters">
-        <Diagram src={diagSmall} alt="Small portable batteries" caption="C — Small Battery → Mini Inverter" />
+        <Diagram src={diagSmall} alt="Small portable batteries" caption="A — Small Battery → Mini Inverter" />
 
         <div className="mt-10 grid gap-4 md:grid-cols-2">
           {batteries.map(([name, v, cap, note, url]) => (

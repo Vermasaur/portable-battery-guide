@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import diagEv from "@/assets/diagram-ev-outlets.png";
+import diagRivian from "@/assets/diagram-rivian-r1t.png";
 import { SiteHeader, SiteFooter, PageHero, Section, Diagram, SectionNav } from "@/components/site-chrome";
 
 export const Route = createFileRoute("/evs")({
@@ -28,6 +29,12 @@ const evs = [
     spec: "120V outlets in bed & gear tunnel · ~1.5 kW",
     note: "Two 120V outlets in the truck bed plus one in the gear tunnel. Ideal for camping and tools.",
     url: "https://rivian.com/r1t",
+  },
+  {
+    name: "Tesla Cybertruck",
+    spec: "Powershare · up to 11.5 kW · 120V + 240V outlets",
+    note: "Two 120V outlets and a 240V outlet in the bed, plus a 120V in the cabin. Powershare can back up a home.",
+    url: "https://www.tesla.com/cybertruck",
   },
   {
     name: "Hyundai Ioniq 5",
@@ -85,6 +92,10 @@ function EvsPage() {
               <p className="mt-2 text-sm text-muted-foreground">{v.note}</p>
             </a>
           ))}
+        </div>
+
+        <div className="mt-12">
+          <Diagram src={diagRivian} alt="Rivian R1T outline with bed and gear tunnel outlets" caption="B — Rivian R1T · Outlet Layout" />
         </div>
       </Section>
 
