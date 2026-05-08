@@ -92,10 +92,6 @@ function EvsPage() {
             </a>
           ))}
         </div>
-
-        <div className="mt-12">
-          <Diagram src={diagRivian} alt="Rivian R1T outline with bed and gear tunnel outlets" caption="B — Rivian R1T · Outlet Layout" />
-        </div>
       </Section>
 
       <Section eyebrow="Why It Matters" title="An EV beats a portable inverter on every spec">
