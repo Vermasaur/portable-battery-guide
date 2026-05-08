@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import diagEv from "@/assets/diagram-ev-outlets.png";
+import diagRivian from "@/assets/diagram-rivian-r1t.png";
 import { SiteHeader, SiteFooter, PageHero, Section, Diagram, SectionNav } from "@/components/site-chrome";
 
 export const Route = createFileRoute("/evs")({
