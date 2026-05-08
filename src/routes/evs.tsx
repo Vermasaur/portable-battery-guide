@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import diagEv from "@/assets/diagram-ev-outlets.png";
-import diagRivian from "@/assets/diagram-rivian-r1t.png";
 import { SiteHeader, SiteFooter, PageHero, Section, Diagram, SectionNav } from "@/components/site-chrome";
 
 export const Route = createFileRoute("/evs")({
@@ -92,10 +91,6 @@ function EvsPage() {
               <p className="mt-2 text-sm text-muted-foreground">{v.note}</p>
             </a>
           ))}
-        </div>
-
-        <div className="mt-12">
-          <Diagram src={diagRivian} alt="Rivian R1T outline with bed and gear tunnel outlets" caption="B — Rivian R1T · Outlet Layout" />
         </div>
       </Section>
 
