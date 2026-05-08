@@ -29,6 +29,13 @@ const evs = [
     spec: "120V outlets in bed & gear tunnel · ~1.5 kW",
     note: "Two 120V outlets in the truck bed plus one in the gear tunnel. Ideal for camping and tools.",
     url: "https://rivian.com/r1t",
+    image: true,
+  },
+  {
+    name: "Tesla Cybertruck",
+    spec: "Powershare · up to 11.5 kW · 120V + 240V outlets",
+    note: "Two 120V outlets and a 240V outlet in the bed, plus a 120V in the cabin. Powershare can back up a home.",
+    url: "https://www.tesla.com/cybertruck",
   },
   {
     name: "Hyundai Ioniq 5",
