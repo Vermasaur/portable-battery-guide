@@ -29,7 +29,6 @@ const evs = [
     spec: "120V outlets in bed & gear tunnel · ~1.5 kW",
     note: "Two 120V outlets in the truck bed plus one in the gear tunnel. Ideal for camping and tools.",
     url: "https://rivian.com/r1t",
-    image: true,
   },
   {
     name: "Tesla Cybertruck",
