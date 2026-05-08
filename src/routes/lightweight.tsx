@@ -1,7 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import diagSmall from "@/assets/diagram-small-batteries.png";
-import diagDcAc from "@/assets/diagram-dc-vs-ac.png";
-import diagHow from "@/assets/diagram-how-it-works.png";
 import { SiteHeader, SiteFooter, PageHero, Section, Diagram, SectionNav } from "@/components/site-chrome";
 
 export const Route = createFileRoute("/lightweight")({
