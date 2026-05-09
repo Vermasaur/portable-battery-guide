@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import diagOverview from "@/assets/diagram-inverter-overview.png";
 import diagDcAc from "@/assets/diagram-dc-vs-ac.png";
 import diagHow from "@/assets/diagram-how-it-works.png";
@@ -194,13 +194,13 @@ function TheoryPage() {
           complete step-by-step DIY guide — bill of materials, diagrams, safety, and bench
           testing — lives on its own page.
         </p>
-        <a
-          href="/build-your-own"
+        <Link
+          to="/build-your-own"
           className="mt-6 inline-flex items-center gap-2 rounded-lg border border-cyan-brand/40 bg-surface px-5 py-3 font-mono text-xs uppercase tracking-widest text-cyan-brand transition-colors hover:bg-cyan-brand/10"
         >
           Go to Build Your Own
           <span>→</span>
-        </a>
+        </Link>
       </Section>
 
       <SectionNav current="/theory" />
