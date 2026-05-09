@@ -187,7 +187,23 @@ function TheoryPage() {
         </div>
       </Section>
 
-      <Section eyebrow="DIY Build" title="Build your own portable AC outlet — start to finish">
+      {/* DIY Build moved to its own page: /build-your-own */}
+      <Section eyebrow="Build It Yourself" title="Want to build one from scratch?">
+        <p className="max-w-3xl text-muted-foreground">
+          Now that you understand how a battery becomes an outlet, you can build one yourself. A
+          complete step-by-step DIY guide — bill of materials, diagrams, safety, and bench
+          testing — lives on its own page.
+        </p>
+        <a
+          href="/build-your-own"
+          className="mt-6 inline-flex items-center gap-2 rounded-lg border border-cyan-brand/40 bg-surface px-5 py-3 font-mono text-xs uppercase tracking-widest text-cyan-brand transition-colors hover:bg-cyan-brand/10"
+        >
+          Go to Build Your Own
+          <span>→</span>
+        </a>
+      </Section>
+      {/* legacy DIY content removed below */}
+      <Section eyebrow="__legacy" title="__legacy" />
         <p className="max-w-3xl text-muted-foreground">
           A complete weekend-to-weeklong project: a 300 W pure-sine, 12 V LiFePO4 portable power
           station with one 120 V outlet, USB-C PD, MPPT solar input, and battery management.
