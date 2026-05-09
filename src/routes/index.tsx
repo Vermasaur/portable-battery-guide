@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import heroImg from "@/assets/hero-inverter.png";
 import diagUse from "@/assets/diagram-use-cases.png";
 import diagOverview from "@/assets/diagram-inverter-overview.png";
+import diagBuild from "@/assets/diy-step-7-finished.png";
 import { SiteHeader, SiteFooter, Diagram } from "@/components/site-chrome";
 
 export const Route = createFileRoute("/")({
@@ -180,6 +181,46 @@ function Index() {
                 <p className="mt-2 text-sm text-muted-foreground">{s.blurb}</p>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-border py-20">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="mb-10 flex items-baseline gap-4">
+            <span className="font-mono text-xs uppercase tracking-[0.25em] text-cyan-brand">
+              Build Your Own
+            </span>
+            <span className="h-px flex-1 bg-border" />
+          </div>
+          <h2 className="mb-8 max-w-3xl text-4xl font-semibold md:text-5xl">
+            Roll your own portable AC outlet
+          </h2>
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+            <Diagram
+              src={diagBuild}
+              alt="Finished DIY portable battery power station"
+              caption="Preview — Finished DIY power station"
+            />
+            <div className="space-y-4 text-muted-foreground">
+              <p>
+                Once you understand the theory, you can build the device. A complete weekend
+                project: a <span className="text-cyan-brand">300 W pure-sine</span> 12 V LiFePO4
+                portable power station with a 120 V GFCI outlet, USB-C PD, and MPPT solar input.
+              </p>
+              <p>
+                The full guide covers the bill of materials, top-balancing the cells, wiring the
+                EGS002 SPWM inverter, building the enclosure, and bench-testing with a scope —
+                with a diagram for every step.
+              </p>
+              <Link
+                to="/build-your-own"
+                className="inline-flex items-center gap-2 rounded-lg border border-cyan-brand/40 bg-surface px-5 py-3 font-mono text-xs uppercase tracking-widest text-cyan-brand transition-colors hover:bg-cyan-brand/10"
+              >
+                Go to Build Your Own
+                <span>→</span>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
