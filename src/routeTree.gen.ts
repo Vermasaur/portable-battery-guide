@@ -13,6 +13,7 @@ import { Route as TheoryRouteImport } from './routes/theory'
 import { Route as LightweightRouteImport } from './routes/lightweight'
 import { Route as HeavyDutyRouteImport } from './routes/heavy-duty'
 import { Route as EvsRouteImport } from './routes/evs'
+import { Route as BuildYourOwnRouteImport } from './routes/build-your-own'
 import { Route as AllInOneRouteImport } from './routes/all-in-one'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -36,6 +37,11 @@ const EvsRoute = EvsRouteImport.update({
   path: '/evs',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BuildYourOwnRoute = BuildYourOwnRouteImport.update({
+  id: '/build-your-own',
+  path: '/build-your-own',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AllInOneRoute = AllInOneRouteImport.update({
   id: '/all-in-one',
   path: '/all-in-one',
@@ -50,6 +56,7 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/all-in-one': typeof AllInOneRoute
+  '/build-your-own': typeof BuildYourOwnRoute
   '/evs': typeof EvsRoute
   '/heavy-duty': typeof HeavyDutyRoute
   '/lightweight': typeof LightweightRoute
@@ -58,6 +65,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/all-in-one': typeof AllInOneRoute
+  '/build-your-own': typeof BuildYourOwnRoute
   '/evs': typeof EvsRoute
   '/heavy-duty': typeof HeavyDutyRoute
   '/lightweight': typeof LightweightRoute
@@ -67,6 +75,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/all-in-one': typeof AllInOneRoute
+  '/build-your-own': typeof BuildYourOwnRoute
   '/evs': typeof EvsRoute
   '/heavy-duty': typeof HeavyDutyRoute
   '/lightweight': typeof LightweightRoute
@@ -77,16 +86,25 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/all-in-one'
+    | '/build-your-own'
     | '/evs'
     | '/heavy-duty'
     | '/lightweight'
     | '/theory'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/all-in-one' | '/evs' | '/heavy-duty' | '/lightweight' | '/theory'
+  to:
+    | '/'
+    | '/all-in-one'
+    | '/build-your-own'
+    | '/evs'
+    | '/heavy-duty'
+    | '/lightweight'
+    | '/theory'
   id:
     | '__root__'
     | '/'
     | '/all-in-one'
+    | '/build-your-own'
     | '/evs'
     | '/heavy-duty'
     | '/lightweight'
@@ -96,6 +114,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AllInOneRoute: typeof AllInOneRoute
+  BuildYourOwnRoute: typeof BuildYourOwnRoute
   EvsRoute: typeof EvsRoute
   HeavyDutyRoute: typeof HeavyDutyRoute
   LightweightRoute: typeof LightweightRoute
@@ -132,6 +151,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EvsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/build-your-own': {
+      id: '/build-your-own'
+      path: '/build-your-own'
+      fullPath: '/build-your-own'
+      preLoaderRoute: typeof BuildYourOwnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/all-in-one': {
       id: '/all-in-one'
       path: '/all-in-one'
@@ -152,6 +178,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AllInOneRoute: AllInOneRoute,
+  BuildYourOwnRoute: BuildYourOwnRoute,
   EvsRoute: EvsRoute,
   HeavyDutyRoute: HeavyDutyRoute,
   LightweightRoute: LightweightRoute,

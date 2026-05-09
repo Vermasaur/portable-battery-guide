@@ -7,6 +7,7 @@ const nav = [
   { to: "/all-in-one", label: "All-in-One" },
   { to: "/evs", label: "EVs" },
   { to: "/theory", label: "Theory" },
+  { to: "/build-your-own", label: "Build Your Own" },
 ] as const;
 
 export function SiteHeader() {
@@ -68,13 +69,14 @@ export function PageHero({ eyebrow, title, blurb }: { eyebrow: string; title: st
   );
 }
 
-export function SectionNav({ current }: { current: "/lightweight" | "/heavy-duty" | "/all-in-one" | "/evs" | "/theory" }) {
+export function SectionNav({ current }: { current: "/lightweight" | "/heavy-duty" | "/all-in-one" | "/evs" | "/theory" | "/build-your-own" }) {
   const all = [
     { to: "/lightweight" as const, label: "Lightweight Setups" },
     { to: "/heavy-duty" as const, label: "Heavy-Duty Setups" },
     { to: "/all-in-one" as const, label: "All-in-One Stations" },
     { to: "/evs" as const, label: "EVs With Outlets" },
     { to: "/theory" as const, label: "Theory" },
+    { to: "/build-your-own" as const, label: "Build Your Own" },
   ];
   const others = all.filter((p) => p.to !== current);
   return (
